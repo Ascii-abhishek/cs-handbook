@@ -1,0 +1,8 @@
+pre, code, kbd {
+    font-family: "<font>", fira code, Consolas, Menlo, monospace;
+    font-size: large;
+}
+
+.md-typeset td{
+    font-size: 15px;
+}

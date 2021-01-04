@@ -23,10 +23,6 @@
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.39b8e14a.min.css">
         
-          
-          
-          <meta name="theme-color" content="#4051b5">
-        
       
     
     
@@ -40,6 +36,8 @@
     
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     
       
     
@@ -49,10 +47,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
       
   
     
@@ -508,6 +508,74 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../ML%20DS/ml_about/" class="md-nav__link">
+      Learning Path
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Preprocessing
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Preprocessing" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        Preprocessing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../ML%20DS/Preprocessing/encode_categorical/" class="md-nav__link">
+      Encoding categorical data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../ML%20DS/Preprocessing/taking_care_missing_data/" class="md-nav__link">
+      Taking care of missing data
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -619,8 +687,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#duck-typing" class="md-nav__link">
-    Duck Typing
+  <a href="#hww-how-what-why" class="md-nav__link">
+    HWW (How, What, Why)
   </a>
   
 </li>
@@ -1476,8 +1544,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#duck-typing" class="md-nav__link">
-    Duck Typing
+  <a href="#hww-how-what-why" class="md-nav__link">
+    HWW (How, What, Why)
   </a>
   
 </li>
@@ -1502,84 +1570,104 @@
                   <h1>Basics</h1>
                 
                 <h2 id="common-methods-and-description">Common Methods and Description<a class="headerlink" href="#common-methods-and-description" title="Permanent link">&para;</a></h2>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
-.tg .tg-34fe{background-color:#404040;border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-zlqz{font-weight:bold;background-color:#404040;border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-5nj1{font-family:"Lucida Console", Monaco, monospace !important;;border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
-<table class="tg">
-  <tr>
-    <th class="tg-zlqz">Method</th>
-    <th class="tg-34fe"><span style="font-weight:bold">Description</span></th>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">type(obj)</td>
-    <td class="tg-0pky">Returns class type of argument</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">id(obj)</td>
-    <td class="tg-0pky">Retuens unique id associated with object</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">dir(class / module)</td>
-    <td class="tg-0pky">Returns all methods available</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">sys.path</td>
-    <td class="tg-0pky">List of locations where python looks for modules to import</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">abc.__doc__</td>
-    <td class="tg-0pky">Print class or method documentation</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">def function():<br>&nbsp;&nbsp;&nbsp;&nbsp;"""documentation"""<br></td>
-    <td class="tg-0pky">Documentation about method to show in __doc__ method</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">map(lambda t: t*2, mylist)</td>
-    <td class="tg-0pky">Map each item of mylist to lambda function</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">FALSE,<br>None,<br>0,<br>" ", ( ), [ ], { }<br></td>
-    <td class="tg-0pky">All evelutes to false</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">len(iterable)</td>
-    <td class="tg-0pky">Returns length of iterable object</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">def function(*args, **kwargs):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(args)<br>&nbsp;&nbsp;&nbsp;&nbsp;print(kwargs)<br></td>
-    <td class="tg-0pky"><br>function('math', 'art', name='dev', age=20)<br><br>args = positional arguments =&gt; ('math', 'art')<br>kwargs = keyword arguments =&gt; {'name': 'dev', 'age': 20}</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">python -m http.server<br># localhost:8000<br>python -m http.server 7800<br># localhost:7800</td>
-    <td class="tg-0pky">Run a local test server</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">python -m pydoc -p 1234<br># localhost:1234</td>
-    <td class="tg-0pky">Open python documentation on local server</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">import timeit<br>timeit.timeit(my_func())</td>
-    <td class="tg-0pky">Measure execution time</td>
-  </tr>
-  <tr>
-    <td class="tg-5nj1">__bool__():<br>&nbsp;&nbsp;&nbsp;&nbsp;return False<br><br>__len__():<br>&nbsp;&nbsp;&nbsp;&nbsp;return 0</td>
-    <td class="tg-0pky">Only cases when object is considered false if its defines any of these methods, else its always considered true</td>
-  </tr>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type(obj)</code></td>
+<td>Returns class type of argument</td>
+</tr>
+<tr>
+<td><code>id(obj)</code></td>
+<td>Retuens unique id associated with object</td>
+</tr>
+<tr>
+<td><code>dir(class / module)</code></td>
+<td>Returns all methods available</td>
+</tr>
+<tr>
+<td><code>sys.path</code></td>
+<td>List of locations where python looks for modules to import</td>
+</tr>
+<tr>
+<td><code>abc.__doc__</code></td>
+<td>Print class or method documentation</td>
+</tr>
+<tr>
+<td><code>def function():</code><br>&emsp;<code>"""documentation"""</code></td>
+<td>Documentation about method to show in __doc__ method</td>
+</tr>
+<tr>
+<td><code>map(lambda t: t*2, mylist)</code></td>
+<td>Map each item of mylist to lambda function</td>
+</tr>
+<tr>
+<td><code>FALSE</code>,<br><code>None</code>,<br><code>0</code>,<br><code>" "</code>, <code>( )</code>, <code>[ ]</code>, <code>{ }</code></td>
+<td>All evelutes to false</td>
+</tr>
+<tr>
+<td><code>len(iterable)</code></td>
+<td>Returns length of iterable object</td>
+</tr>
+<tr>
+<td><code>def function(*args, **kwargs):</code> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br>&emsp;<code>print(args)</code><br>&emsp;<code>print(kwargs)</code><br></td>
+<td 20="20" _age_:="'age':" _dev_="'dev'," _name_:="'name':"><br>function('math', 'art', name='dev', age=20)<br><br>args = positional arguments =&gt; ('math', 'art')<br>kwargs = keyword arguments =&gt;</td>
+</tr>
+<tr>
+<td><code>python -m http.server</code><br># localhost:8000<br><br><code>python -m http.server 7800</code><br># localhost:7800</td>
+<td>Run a local test server</td>
+</tr>
+<tr>
+<td><code>python -m pydoc -p 1234</code><br># localhost:1234</td>
+<td>Open python documentation on local server</td>
+</tr>
+<tr>
+<td><code>import timeit</code><br><code>timeit.timeit(my_func())</code></td>
+<td>Measure execution time</td>
+</tr>
+<tr>
+<td><code>__bool__():</code><br>&emsp;<code>return False</code><br><br><code>__len__():</code><br>&emsp;<code>return 0</code></td>
+<td>Only cases when object is considered false if its defines any of these methods, else its always considered true</td>
+</tr>
+<tr>
+<td><br></td>
+<td></td>
+</tr>
+</tbody>
 </table>
-<p><br></p>
-<h2 id="duck-typing">Duck Typing<a class="headerlink" href="#duck-typing" title="Permanent link">&para;</a></h2>
-<p>Duck typing is a concept that says that the “type” of the object is a matter of concern only at runtime and you don’t need to to explicitly mention the type of the object before you perform any kind of operation on that object. The following example can help in understanding this concept -</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<h2 id="hww-how-what-why">HWW (How, What, Why)<a class="headerlink" href="#hww-how-what-why" title="Permanent link">&para;</a></h2>
+<details class="question"><summary>How <code>else</code> works with <code>for</code> loop?</summary><p>you may know about "break" keyword.. 
+let say in a loop through a list of numbers, you want to check if it has 5 or not
+if you find 5, then there is no need to be in the loop, you break it with "break" keyword, </p>
+<p>for ex:</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;found 5&quot;</span><span class="p">)</span>
+    <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aligarh&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>Now, Python says that for the above function I don’t need to be concerned about the “type” of the objects ‘a’ &amp; ‘b’ and that the type will be taken care of during runtime as long as the objects support the ‘+’ . So, keeping this in mind the above function will work for any “type” of object which supports the operator + i.e. it will return valid values for a string, list or Integer.</p>
+Output: \"found 5\"</p>
+<p>else statement with for look will work if no "break" happens in the loop
+like in above code "break" will happen, so "aligarh" will not be printed</p>
+<p>but in below code "break" will not happen, because there is no 5 in the list, 
+so else statement will run too</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;found 5&quot;</span><span class="p">)</span>
+    <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;aligarh&quot;</span><span class="p">)</span>
+</code></pre></div>
+Output: \"aligarh\"</p>
+</details>
                 
                   
                 

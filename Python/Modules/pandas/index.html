@@ -23,10 +23,6 @@
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.39b8e14a.min.css">
         
-          
-          
-          <meta name="theme-color" content="#4051b5">
-        
       
     
     
@@ -40,6 +36,8 @@
     
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     
       
     
@@ -49,10 +47,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
       
   
     
@@ -508,6 +508,74 @@
   </li>
 
         
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../ML%20DS/ml_about/" class="md-nav__link">
+      Learning Path
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Preprocessing
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Preprocessing" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        <span class="md-nav__icon md-icon"></span>
+        Preprocessing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../ML%20DS/Preprocessing/encode_categorical/" class="md-nav__link">
+      Encoding categorical data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../ML%20DS/Preprocessing/taking_care_missing_data/" class="md-nav__link">
+      Taking care of missing data
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -893,6 +961,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to" class="md-nav__link">
+    How to
+  </a>
   
 </li>
       
@@ -1550,6 +1625,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-to" class="md-nav__link">
+    How to
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1806,6 +1888,82 @@
 </tr>
 </tbody>
 </table>
+<h2 id="how-to">How to<a class="headerlink" href="#how-to" title="Permanent link">&para;</a></h2>
+<details class="question"><summary>Expand pandas DataFrame column into multiple rows</summary><div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Description </label><div class="tabbed-content">
+<p>Input:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>days</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>[1, 3, 5, 7]</td>
+<td>John</td>
+</tr>
+<tr>
+<td>1</td>
+<td>[2, 4]</td>
+<td>Eric</td>
+</tr>
+</tbody>
+</table>
+<p>Output:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>days</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>John</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>John</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5</td>
+<td>John</td>
+</tr>
+<tr>
+<td>3</td>
+<td>7</td>
+<td>John</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>Eric</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4</td>
+<td>Eric</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Solution</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="n">lens</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;days&#39;</span><span class="p">]]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">lens</span><span class="p">),</span> 
+              <span class="s2">&quot;days&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;days&#39;</span><span class="p">])</span>
+            <span class="p">})</span>
+</code></pre></div>
+</div>
+</div>
+</details>
                 
                   
                 
