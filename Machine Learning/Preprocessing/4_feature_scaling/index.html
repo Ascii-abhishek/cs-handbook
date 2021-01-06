@@ -14,7 +14,7 @@
     
     
       
-        <title>Encoding categorical data - CS Handbook</title>
+        <title>Feature Scaling - CS Handbook</title>
       
     
     
@@ -88,7 +88,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Encoding categorical data
+              Feature Scaling
             
           </span>
         </div>
@@ -633,32 +633,6 @@
           
 
 
-
-  <li class="md-nav__item">
-    <a href="../../how_to_ml/" class="md-nav__link">
-      How to
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../ml_about/" class="md-nav__link">
-      Learning Path
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
   
 
 
@@ -666,19 +640,58 @@
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
     
-    <label class="md-nav__link" for="nav-3-4">
+    <label class="md-nav__link" for="nav-3-2">
       Preprocessing
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Preprocessing" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-4">
+      <label class="md-nav__title" for="nav-3-2">
         <span class="md-nav__icon md-icon"></span>
         Preprocessing
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../1_taking_care_missing_data/" class="md-nav__link">
+      Taking care of missing data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../2_encode_categorical/" class="md-nav__link">
+      Encoding categorical data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../3_splitting_data/" class="md-nav__link">
+      Splitting dataset into traing and test set
+    </a>
+  </li>
+
         
           
           
@@ -694,22 +707,9 @@
     
     
     <a href="./" class="md-nav__link md-nav__link--active">
-      Encoding categorical data
+      Feature Scaling
     </a>
     
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../taking_care_missing_data/" class="md-nav__link">
-      Taking care of missing data
-    </a>
   </li>
 
         
@@ -1623,209 +1623,48 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Ascii-abhishek/cs-handbook/edit/master/docs/Machine Learning/Preprocessing/encode_categorical.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/Ascii-abhishek/cs-handbook/edit/master/docs/Machine Learning/Preprocessing/4_feature_scaling.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Encoding categorical data</h1>
+                  <h1>Feature Scaling</h1>
                 
                 <ul>
-<li>let say in a \'country\' column, there are 3 unique values: ['France', 'Germany', 'Spain]</li>
-<li>If we convert this data in such a way that: {'France': 0, 'Germany': 1, 'Spain': 2},</li>
-<li>ML model can consider the values as weights, i.e. spain has more effect on depandant variable, even though it is not the case</li>
-<li>So, we prefer converting this data as follows:</li>
+<li>Some ML models care about data dominance and other don't. So, we may not always need to do this.</li>
+<li>Let say one of the columns data has values like [1, 55, 112, 28, 87], i.e. all the values are in range 0-100, more precisely, the differnce between any two values is not much far from their average difference. This data would do good in model preperation.</li>
+<li>But just in case if we have data like: [5, 20, 12, 500, 6000, 22, 24], it may be not good for our model.</li>
+<li>So we scale this data to around same level, there are two main methods to do this:</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>France</th>
-<th>Germany</th>
-<th>Spain</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Standarization</label><div class="tabbed-content">
 <ul>
-<li>Process of converting categorical data into such form is known as \"One Hot Encoding\".</li>
+<li>Result data will be in the range of -3 to +3</li>
+<li>Works well in all cases</li>
 </ul>
-<details class="info"><summary>How will it look like</summary><div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Input data</label><div class="tabbed-content">
-<table>
-<thead>
-<tr>
-<th>Country</th>
-<th>Age</th>
-<th>Salary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>France</td>
-<td>44</td>
-<td>72000</td>
-</tr>
-<tr>
-<td>Spain</td>
-<td>27</td>
-<td>48000</td>
-</tr>
-<tr>
-<td>Germany</td>
-<td>30</td>
-<td>54000</td>
-</tr>
-<tr>
-<td>Spain</td>
-<td>38</td>
-<td>61000</td>
-</tr>
-<tr>
-<td>Germany</td>
-<td>40</td>
-<td>63777</td>
-</tr>
-<tr>
-<td>France</td>
-<td>35</td>
-<td>58000</td>
-</tr>
-<tr>
-<td>Spain</td>
-<td>38</td>
-<td>52000</td>
-</tr>
-<tr>
-<td>France</td>
-<td>48</td>
-<td>79000</td>
-</tr>
-<tr>
-<td>Germany</td>
-<td>50</td>
-<td>83000</td>
-</tr>
-<tr>
-<td>France</td>
-<td>37</td>
-<td>67000</td>
-</tr>
-</tbody>
-</table>
+<div class="arithmatex">\[ X_{stand} = \frac{X-mean(X)}{Standard-deviation(X)} \]</div>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">One Hot Encoding</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransform</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
-
-<span class="n">ct</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span><span class="n">transformers</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;encoder&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(),</span> <span class="p">[</span><span class="mi">0</span><span class="p">])],</span> <span class="n">remainder</span><span class="o">=</span><span class="s1">&#39;passthrough&#39;</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ct</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Normalization</label><div class="tabbed-content">
+<ul>
+<li>Result data will be in the range of 0 to 1</li>
+<li>Recommended when data is normally distributed</li>
+</ul>
+<div class="arithmatex">\[ X_{norm} = \frac{X-min(X)}{max(X)-min(X)} \]</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">We should never apply scaling on dummy variables, because they are already scaled (values are either 0 or 1). Also, applying the standarization will convert them into the range (-3, 3) eventually affecting the model</p>
+</div>
+<div class="highlight"><pre><span></span><code>    <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:]</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:])</span>
+    <span class="n">X_test</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:]</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:])</span>
 </code></pre></div>
-</div>
-<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Output Data</label><div class="tabbed-content">
 <ul>
-<li>First three columns of following table can represent any of ['France', 'Germany', 'Spain']</li>
+<li>Here, we do not need to apply fit again on test data because we want to use same scaler of training data on test data.</li>
+<li>I.e. we are using same mean and SD obtained from training data (by <code>fit()</code>) on both training and test set (by <code>transform()</code>)</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>France</th>
-<th>Germany</th>
-<th>Spain</th>
-<th>Age</th>
-<th>Salary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>44.0</td>
-<td>72000.0</td>
-</tr>
-<tr>
-<td>0.0</td>
-<td>0.0</td>
-<td>1.0</td>
-<td>27.0</td>
-<td>48000.0</td>
-</tr>
-<tr>
-<td>0.0</td>
-<td>1.0</td>
-<td>0.0</td>
-<td>30.0</td>
-<td>54000.0</td>
-</tr>
-<tr>
-<td>0.0</td>
-<td>0.0</td>
-<td>1.0</td>
-<td>38.0</td>
-<td>61000.0</td>
-</tr>
-<tr>
-<td>0.0</td>
-<td>1.0</td>
-<td>0.0</td>
-<td>40.0</td>
-<td>63777.0</td>
-</tr>
-<tr>
-<td>1.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>35.0</td>
-<td>58000.0</td>
-</tr>
-<tr>
-<td>0.0</td>
-<td>0.0</td>
-<td>1.0</td>
-<td>38.0</td>
-<td>52000.0</td>
-</tr>
-<tr>
-<td>1.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>48.0</td>
-<td>79000.0</td>
-</tr>
-<tr>
-<td>0.0</td>
-<td>1.0</td>
-<td>0.0</td>
-<td>50.0</td>
-<td>83000.0</td>
-</tr>
-<tr>
-<td>1.0</td>
-<td>0.0</td>
-<td>0.0</td>
-<td>37.0</td>
-<td>67000.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</details>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
                 
                   
                 
@@ -1846,7 +1685,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../../ml_about/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../3_splitting_data/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -1855,19 +1694,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Learning Path
+                Splitting dataset into traing and test set
               </div>
             </div>
           </a>
         
         
-          <a href="../taking_care_missing_data/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../Python/Basics/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Taking care of missing data
+                Learning Path
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
