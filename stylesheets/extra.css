@@ -7,6 +7,10 @@ pre, code, kbd {
     font-size: 15px;
 }
 
+.md-grid {
+    max-width: initial;
+}
+
 .tg {
     border-collapse: collapse;
     border-spacing: 0;
