@@ -61,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#queries" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1305,9 +1310,36 @@
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        PyMongo
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
     <a href="./" class="md-nav__link md-nav__link--active">
       PyMongo
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    queries
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -1883,6 +1915,35 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#queries" class="md-nav__link">
+    queries
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -1923,31 +1984,112 @@
 <span class="n">d</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 
 <span class="c1">#################################################################</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">MongoClient</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
-<span class="c1"># client = MongoClient(&#39;mongodb://localhost:27017/&#39;)</span>
-
-
-<span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">test_database</span>
-<span class="c1"># db = client[&#39;test-database&#39;]</span>
-
-<span class="n">all_collections_list</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
-<span class="n">collection</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">test_collection</span>
-<span class="c1"># collection = db[&#39;test-collection&#39;]</span>
-
-<span class="n">collection</span><span class="o">.</span><span class="n">find_one</span><span class="p">()</span>
-<span class="n">collection</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Mike&quot;</span><span class="p">})</span>
-<span class="n">collection</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="n">post_id</span><span class="p">)})</span> <span class="c1"># String format of post_id will not work</span>
-<span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Mike&quot;</span><span class="p">})</span> <span class="c1"># Returns a list</span>
-<span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$lt&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">}})</span> <span class="c1"># date value is less than given date d</span>
-
-<span class="n">collection</span><span class="o">.</span><span class="n">count_documents</span><span class="p">({</span><span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Mike&quot;</span><span class="p">})</span> <span class="c1"># Returns a integer</span>
-
-<span class="n">collection</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
-<span class="n">collection</span><span class="o">.</span><span class="n">insert_one</span><span class="p">(</span><span class="n">post</span><span class="p">)</span><span class="o">.</span><span class="n">inserted_id</span> <span class="c1"># Returns object ids</span>
-<span class="n">collection</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="n">new_posts</span><span class="p">)</span>
-<span class="n">collection</span><span class="o">.</span><span class="n">insert_many</span><span class="p">(</span><span class="n">new_posts</span><span class="p">)</span><span class="o">.</span><span class="n">inserted_ids</span> <span class="c1"># Returns list of object ids</span>
 </code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connect To mongodb</td>
+<td><code>client = MongoClient('mongodb://localhost:27017/')</code><br><code>client = pymongo.MongoClient("localhost", 27017)</code></td>
+</tr>
+<tr>
+<td>returns list of databases</td>
+<td><code>client.list_database_names()</code></td>
+</tr>
+<tr>
+<td>Create/switch to database</td>
+<td><code>db = client['test-database']</code><br><code>db = client.test_database</code></td>
+</tr>
+<tr>
+<td>Returns list of collections</td>
+<td><code>db.list_collection_names()</code></td>
+</tr>
+<tr>
+<td>Create new collection</td>
+<td><code>collection = db.test_collection</code><br><code>collection = db['test-collection']</code></td>
+</tr>
+<tr>
+<td>Delete the collection</td>
+<td><code>collection.drop()</code> #</td>
+</tr>
+<tr>
+<td>Find Operation<br>1. Returns first document<br>2. Returns first doc which satisfy given query<br>3. String format of post_id will not work</td>
+<td><br>1. <code>collection.find_one()</code><br>2. <code>collection.find_one({"author": "Mike"})</code><br>3. <code>collection.find_one({'_id': ObjectId(post_id)})</code></td>
+</tr>
+<tr>
+<td>Returns a list, docs will have address and name, 0 allowed only for id</td>
+<td><code>collection.find({"author": "Mike"}, {"name": 1, "address": 1 })</code></td>
+</tr>
+<tr>
+<td>Output in order; -1 &gt; Descending, 1 &gt; ascending</td>
+<td><code>collection.find({"author": "Mike"}).sort("title", -1)</code></td>
+</tr>
+<tr>
+<td>Date value is less than given date d</td>
+<td><code>collection.find({"date": {"$lt": d}})</code></td>
+</tr>
+<tr>
+<td>Returns only 5 documents</td>
+<td><code>collection.find({"author": "Mike"}).limit(5)</code></td>
+</tr>
+<tr>
+<td>Delete one document</td>
+<td><code>collection.delete_one({"address": "Mountain 21"})</code></td>
+</tr>
+<tr>
+<td>Delete multiple documents</td>
+<td><code>collection.delete_many({"author": "Mike"})</code> #</td>
+</tr>
+<tr>
+<td>Delete all docs of collection</td>
+<td><code>collection.delete_many({})</code></td>
+</tr>
+<tr>
+<td>Returns deleted docs count</td>
+<td><code>collection.delete_many().deleted_count</code></td>
+</tr>
+<tr>
+<td>Count of all document in the collection</td>
+<td><code>collection.count_documents({"author": "Mike"})</code></td>
+</tr>
+<tr>
+<td>Insert a single document</td>
+<td><code>collection.insert_one(post)</code><br><code>collection.insert_one(post).inserted_id</code></td>
+</tr>
+<tr>
+<td>Insert Multiple documents</td>
+<td><code>collection.insert_many(new_posts)</code><br><code>collection.insert_many(new_posts).inserted_ids</code></td>
+</tr>
+<tr>
+<td>Update document <br>if we dont specify <code>$set</code>, it will replace whole doc</td>
+<td><code>collection.update_one(myquery, {"$set": {"address": "Canyon 123"}})</code> <br><code>collection.update_many(myquery, newvalues).modified_count</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="queries">queries<a class="headerlink" href="#queries" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Query</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Greater than</td>
+<td>"$gt": "S"</td>
+</tr>
+<tr>
+<td>Regular expression</td>
+<td>"$regex": "^S"</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
